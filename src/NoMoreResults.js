@@ -1,21 +1,21 @@
-import React from 'react'
-import {makeStyles, Typography, Grid} from '@material-ui/core'
+import React from "react";
+import { makeStyles, Typography, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   container: {
-    textAlign: 'center',
-    marginTop: '4em',
-    marginBottom: '8em'
+    textAlign: "center",
+    marginTop: "4em",
+    marginBottom: "8em"
   },
   header: {
-    fontFamily: 'Pacifico',
-    fontSize: '1.8em',
-    marginBottom: '0.5em'
+    fontFamily: "Pacifico",
+    fontSize: "1.8em",
+    marginBottom: "0.5em"
   }
-})
+});
 
-export function NoMoreResults () {
-  const classes = useStyles()
+export function NoMoreResults() {
+  const classes = useStyles();
 
   return (
     <Grid item xs={12} className={classes.container}>
@@ -26,5 +26,5 @@ export function NoMoreResults () {
         There are no more results. Why not search for something else?
       </Typography>
     </Grid>
-  )
+  );
 }

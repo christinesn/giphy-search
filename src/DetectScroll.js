@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export function DetectScroll ({ gifsCount, loadMore, setLoadMore }) {
-  function getDocumentHeight () {
-    const body = document.body
-    const html = document.documentElement
+export function DetectScroll({ gifsCount, loadMore, setLoadMore }) {
+  function getDocumentHeight() {
+    const body = document.body;
+    const html = document.documentElement;
 
     return Math.max(
       body.scrollHeight,
@@ -11,42 +11,39 @@ export function DetectScroll ({ gifsCount, loadMore, setLoadMore }) {
       html.clientHeight,
       html.scrollHeight,
       html.offsetHeight
-    )
+    );
   }
 
-  function getClientHeight () {
-    return document.documentElement.clientHeight
+  function getClientHeight() {
+    return document.documentElement.clientHeight;
   }
 
-  function getScrollTop () {
-    const body = document.body
-    const html = document.documentElement
+  function getScrollTop() {
+    const body = document.body;
+    const html = document.documentElement;
 
-    return Math.max(
-      body.scrollTop,
-      html.scrollTop
-    )
+    return Math.max(body.scrollTop, html.scrollTop);
   }
 
-  function handleScroll () {
-    if (gifsCount === 0 || loadMore) return
+  function handleScroll() {
+    if (gifsCount === 0 || loadMore) return;
 
-    const documentHeight = getDocumentHeight()
-    const scrollTop = getScrollTop()
-    const clientHeight = getClientHeight()
+    const documentHeight = getDocumentHeight();
+    const scrollTop = getScrollTop();
+    const clientHeight = getClientHeight();
 
-    if ((scrollTop +  clientHeight) >= documentHeight) {
-      setLoadMore(true)
+    if (scrollTop + clientHeight >= documentHeight) {
+      setLoadMore(true);
     }
   }
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  })
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 
-  return null
+  return null;
 }

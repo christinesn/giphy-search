@@ -1,7 +1,7 @@
 import React from 'react'
 import {makeStyles, Typography, Grid} from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   container: {
     textAlign: 'center',
     marginTop: '4em',
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1.8em',
     marginBottom: '0.5em'
   }
-}))
+})
 
 export function NoMoreResults () {
   const classes = useStyles()

@@ -3,7 +3,7 @@ import {makeStyles, Grid, Typography} from '@material-ui/core'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   error: {
     padding: '1em',
     backgroundColor: '#f2dddc',
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: '0.5em',
     color: '#d49390'
   }
-}))
+})
 
 export function Error ({ error }) {
   const classes = useStyles()

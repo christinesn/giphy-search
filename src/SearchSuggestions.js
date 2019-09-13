@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid, Typography, Button, makeStyles} from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   container: {
     textAlign: 'center',
     padding: '0 2em !important',
@@ -27,13 +27,13 @@ const useStyles = makeStyles(theme => ({
       borderBottom: '3px solid #65ad32'
     }
   }
-}))
+})
 
 export function SearchSuggestions ({ setQuery }) {
   const classes = useStyles()
 
   const suggestions = [
-    'laughing',
+    'lol',
     'cats',
     'mermaids',
     'spongebob',

@@ -1,16 +1,22 @@
 import React from 'react'
 import {Grid, CardActionArea, makeStyles} from '@material-ui/core'
+import classnames from 'classnames'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   gif: {
     height: 200,
     width: 'auto',
     borderBottom: '7px solid #f0e94a'
+  },
+  loading: {
+    width: 250,
+    backgroundColor: 'rgba(0, 0, 0, 0.02)'
   }
-}))
+})
 
 export function Gif ({ gif, paused }) {
   const classes = useStyles()
+  const [loaded, setLoaded] = React.useState(false)
 
   return (
     <Grid item>
@@ -22,7 +28,11 @@ export function Gif ({ gif, paused }) {
         <img
           src={paused ? gif.images.fixed_height_still.url : gif.images.fixed_height.url}
           alt={gif.title}
-          className={classes.gif}
+          className={classnames(
+            classes.gif,
+            { [classes.loading]: !loaded }
+          )}
+          onLoad={() => setLoaded(true)}
         />
       </CardActionArea>
     </Grid>

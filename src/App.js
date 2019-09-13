@@ -10,7 +10,7 @@ import {NoMoreResults} from './NoMoreResults'
 import {DetectScroll} from './DetectScroll'
 import {SearchSuggestions} from './SearchSuggestions'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   '@global': {
     body: {
       margin: 0,
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '6em',
     boxSizing: 'border-box'
   }
-}))
+})
 
 function App() {
   const classes = useStyles()
@@ -39,6 +39,7 @@ function App() {
   React.useEffect(() => {
     if (!query) {
       setGifs([])
+      setNoMoreResults(false)
       return
     }
 
@@ -75,7 +76,7 @@ function App() {
 
   /** Infinite scroll */
   React.useEffect(() => {
-    if (!loadMore || noMoreResults) return
+    if (!loadMore || noMoreResults || !query) return
 
     const loadMoreResults = async () => {
       try {
@@ -112,8 +113,6 @@ function App() {
     setLoadMore(false)
     setLoading(false)
   }, [loadMore, noMoreResults, query, gifs])
-
-  console.log(loading)
 
   return (
     <div>

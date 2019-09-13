@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid, makeStyles} from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   loading: {
     fontFamily: 'Pacifico',
     fontSize: '2em',
@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '2em',
     textAlign: 'center'
   }
-}))
+})
 
 export function Loading () {
   const classes = useStyles()

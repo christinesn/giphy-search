@@ -1,7 +1,7 @@
 import React from 'react'
 import {InputBase, Button, makeStyles} from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   container: {
     textAlign: 'center',
     width: '100%'
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   focus: {}
-}));
+});
 
 export function SearchForm ({ setQuery, query }) {
   const classes = useStyles()

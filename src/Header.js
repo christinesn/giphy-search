@@ -15,17 +15,17 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Pacifico",
     fontSize: "2em",
     height: "100%",
-    padding: "0 1em",
+    padding: "0.35em 1em",
     textShadow: "5px 0px 0px rgba(255, 255, 255, 0.9)",
     textTransform: "none",
     borderRadius: 0,
+    whiteSpace: "nowrap",
     [theme.breakpoints.down("md")]: {
-      fontSize: "1.7em"
+      fontSize: "1.7em",
+      padding: "0.55em 1em"
     }
   },
   pauseButton: {
-    float: "right",
-    marginLeft: "auto",
     padding: "2.3em",
     borderRadius: 0,
     color: "rgba(0, 0, 0, 0.75)",

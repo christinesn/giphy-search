@@ -37,13 +37,18 @@ function App() {
 
   /** Search */
   React.useEffect(() => {
-    if (!query) {
-      setGifs([])
-      setNoMoreResults(false)
-      return
-    }
+    let canceled = false
 
-    const search = async () => {
+    async function search () {
+      setNoMoreResults(false)
+      setGifs([])
+
+      if (!query) {
+        return
+      }
+
+      setLoading(true)
+
       try {
         const res = await axios({
           method: 'GET',
@@ -57,28 +62,32 @@ function App() {
           }
         })
 
+        if (canceled) {
+          return
+        }
+  
         setGifs(res.data.data || [])
-
+  
         if (res.data.meta.status !== 200) {
           setError(`${res.data.meta.status}: ${res.data.meta.msg}`)
         }
       } catch (error) {
         setError(`500: ${error.message}`)
       }
+
+      setLoading(false)
     }
 
-    setLoading(true)
-    setNoMoreResults(false)
-    setGifs([])
     search()
-    setLoading(false)
+    return () => { canceled = true }
   }, [query])
 
   /** Infinite scroll */
   React.useEffect(() => {
-    if (!loadMore || noMoreResults || !query) return
+    async function loadMoreResults () {
+      if (!loadMore || noMoreResults || !query) return
+      setLoading(true)
 
-    const loadMoreResults = async () => {
       try {
         const res = await axios({
           method: 'GET',
@@ -106,12 +115,12 @@ function App() {
       } catch (error) {
         setError(`500: ${error.message}`)
       }
+
+      setLoadMore(false)
+      setLoading(false)
     }
 
-    setLoading(true)
     loadMoreResults()
-    setLoadMore(false)
-    setLoading(false)
   }, [loadMore, noMoreResults, query, gifs])
 
   return (

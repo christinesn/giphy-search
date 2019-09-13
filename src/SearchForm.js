@@ -76,6 +76,7 @@ export function SearchForm ({ setQuery, query }) {
         }}
         type="submit"
         variant="outlined"
+        data-testid="search"
       >
         Search
       </Button>

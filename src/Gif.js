@@ -33,6 +33,7 @@ export function Gif ({ gif, paused }) {
             { [classes.loading]: !loaded }
           )}
           onLoad={() => setLoaded(true)}
+          data-testid={paused ? 'paused' : 'animated'}
         />
       </CardActionArea>
     </Grid>

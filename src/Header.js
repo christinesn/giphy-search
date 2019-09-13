@@ -42,9 +42,13 @@ export function Header ({ paused, setPaused, setQuery, query }) {
       variant="fixed"
     >
       <Grid container>
-        <Hidden smDown>
+        <Hidden smDown implementation="css">
           <Grid item xs={3}>
-            <Button className={classes.title} onClick={() => setQuery('')}>
+            <Button
+              className={classes.title}
+              onClick={() => setQuery('')}
+              data-testid="home-button"
+            >
               Giphy Search
             </Button>
           </Grid>
@@ -55,7 +59,7 @@ export function Header ({ paused, setPaused, setQuery, query }) {
             query={query}
           />
         </Grid>
-        <Hidden xsDown>
+        <Hidden xsDown implementation="css">
           <Grid item xs={2}>
             <Button
               onClick={() => setPaused(!paused)}
